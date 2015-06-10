@@ -23,8 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    	<h1>学生添加成功</h1> <br>
-    	<a href="addStudent.jsp">继续添加</a></br>
-    	<a href="/ClassDesign02/classmatelist.jsp">查看列表</h3>
+    	<h1>学生更新成功</h1> <br>
+    	<a href="/ClassDesign02/admin/listStudent.jsp">查看列表</h3>
   </body>
 </html>

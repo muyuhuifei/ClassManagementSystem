@@ -31,7 +31,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	response.sendRedirect("listStudent.jsp");
    %>
   <body>
-    <h1>删除成功</h1>
-    
   </body>
 </html>

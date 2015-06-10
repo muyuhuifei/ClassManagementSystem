@@ -23,9 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<jsp:include page="../inc/head.jsp">
-  	  		<jsp:param value="Add" name="op"/>
-	</jsp:include>
+  	<jsp:include page="../inc/head.jsp"/>
     <form action="/ClassDesign02/servlet/addStudentServlet" method="post">
     	<table>
     		<tr><td>学生学号</td><td><input type="text" name="sid"/></td></tr>

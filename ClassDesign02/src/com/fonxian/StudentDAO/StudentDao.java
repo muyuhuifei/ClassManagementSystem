@@ -155,6 +155,7 @@ public class StudentDao implements StudentIDao{
 		try {
 			conn = DBUtil.getConnection();
 			 ps = conn.prepareStatement(sql);
+			 ps.setInt(1, id);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				studentScore = new studentScore();
@@ -188,10 +189,10 @@ public class StudentDao implements StudentIDao{
 		// TODO Auto-generated method stub
 		String sql="select * from student where sid=?";
 		Student stu = null;
-		List<studentScore> scores = new ArrayList<studentScore>();
 		try {
 			conn = DBUtil.getConnection();
 			 ps = conn.prepareStatement(sql);
+			 ps.setInt(1, id);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				stu = new Student();
@@ -212,6 +213,7 @@ public class StudentDao implements StudentIDao{
 		return null;
 	}
 
+	//更新老师信息
 	@Override
 	public void updateStudent(Student stu) {
 		// TODO Auto-generated method stub
@@ -219,7 +221,6 @@ public class StudentDao implements StudentIDao{
 		try {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, stu.getSname());
 			ps.setInt(2, stu.getStel());

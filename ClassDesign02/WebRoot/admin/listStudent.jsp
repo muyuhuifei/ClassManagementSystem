@@ -27,7 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    	<jsp:include page="/inc/head.jsp"/>
     <%
     	StudentDao dao = DaoFactory.getDao();
     	List<Student> stus = dao.findStudent();
@@ -37,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <% 
    		for(Student i : stus){
    	%>
-   				<tr><td><%=i.getSid() %></td><td><%=i.getSname() %></td><td><%=i.getStel() %></td><td>计算机<%=i.getClassid() %>班</td><td><a href="admin/delStudent.jsp?sid=<%=i.getSid()%>">删除</a>|<a href="updateStudent.jsp?sid=<%=i.getSid() %>">更改</a></td></tr>
+   				<tr><td><%=i.getSid() %></td><td><%=i.getSname() %></td><td><%=i.getStel() %></td><td>计算机<%=i.getClassid() %>班</td><td><a href="admin/delStudent.jsp?sid=<%=i.getSid()%>">删除</a>|<a href="admin/updateStudent.jsp?sid=<%=i.getSid() %>">更改</a></td></tr>
    	<%
    		}
      %>

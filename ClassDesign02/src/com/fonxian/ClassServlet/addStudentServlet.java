@@ -71,8 +71,7 @@ public class addStudentServlet extends HttpServlet {
     	stu.setStel(stel);
     	StudentIDao studao = DaoFactory.getDao();
     	studao.addStudent(stu);
-    	System.out.println("Ìí¼Ó³É¹¦");
-    	response.sendRedirect("../admin/addSuccess.jsp");
+    	response.sendRedirect("../admin/listStudent.jsp");
 	}
 
 }
