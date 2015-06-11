@@ -38,12 +38,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" method="post" action="loginDeal.jsp">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">StudentId</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="学号" required autofocus>
+        <input type="text" id="inputEmail" name = "loginName" class="form-control" placeholder="学号" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+        <input type="password" id="inputPassword" name = "loginPassword" class="form-control" placeholder="密码" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

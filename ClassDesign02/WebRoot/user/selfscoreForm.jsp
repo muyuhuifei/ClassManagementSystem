@@ -1,5 +1,6 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="com.fonxian.Model.Student"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -35,7 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-
+<%
+	Student stu = (Student)session.getAttribute("loginUser");
+ %>
     <div class="container">
 
       <form class="form-signin"  action="/ClassDesign02/user/selfscore.jsp" method="post">

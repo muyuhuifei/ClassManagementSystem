@@ -5,6 +5,20 @@ public class Student {
 	private String sname;
 	private int stel;
 	private int classid;//°à¼¶±àºÅ
+	private String password;
+	private int status;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public int getSid() {
 		return sid;
 	}

@@ -15,9 +15,9 @@ public interface StudentIDao {
 	public void addClass(Classes cl);
 	public void delStudent(int id);
 	public Student load(int id);
+	public Student login(int sid,String password);
 	public List<Student> findStudent();
 	public void updateStudent(Student stu);
 	public List<studentScore> findScore(int id);
 	public List<studentScore> findScore(String sname);
-
 }

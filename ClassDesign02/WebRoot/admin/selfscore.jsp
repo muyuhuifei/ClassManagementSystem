@@ -5,7 +5,6 @@
 <%@page import="com.fonxian.StudentDAO.DaoFactory"%>
 <%@page import="com.fonxian.Model.studentScore"%>
 <%@page import="com.fonxian.Model.Student"%>
-<%@page import="com.fonxian.Model.ClassException"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -41,10 +40,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-		<%
-
-		Student student = (Student)session.getAttribute("loginUser");
-		
+	<%
+		Student stu = (Student)session.getAttribute("loginUser");
 	 %>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -75,10 +72,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">系统说明 <span class="sr-only">(current)</span></a></li>
-            <li><a href="listStudent.jsp">班级通讯录</a></li>
-            <li><a href="selfscore.jsp">个人成绩</a></li>
-            <li><a href="#">个人信息</a></li>
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
@@ -110,10 +107,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </tr>
               </thead>
               <tbody>
-
     		 <%
-    		 		
-					int id = student.getSid();
+					int id = Integer.parseInt(request.getParameter("id"));
     				StudentDao dao = DaoFactory.getDao();
     				studentScore sc = new studentScore();
     				List<studentScore> score = dao.findScore(id);

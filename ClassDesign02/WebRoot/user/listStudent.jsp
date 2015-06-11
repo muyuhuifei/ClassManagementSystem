@@ -3,7 +3,6 @@
 <%@page import="com.fonxian.StudentDAO.StudentDao"%>
 <%@page import="com.fonxian.StudentDAO.StudentIDao"%>
 <%@page import="com.fonxian.StudentDAO.DaoFactory"%>
-<%@page import="com.fonxian.Model.studentScore"%>
 <%@page import="com.fonxian.Model.Student"%>
 <%@page import="com.fonxian.Model.ClassException"%>
 <%
@@ -41,10 +40,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-		<%
-
-		Student student = (Student)session.getAttribute("loginUser");
-		
+	<%
+		Student stud = (Student)session.getAttribute("loginUser");
 	 %>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -94,39 +91,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">个人中心</h1></br>
+          <h1 class="page-header"><%=stud.getSname() %>的个人中心</h1></br>
 
-
-          <h2 class="sub-header">成绩单</h2>
+          <h2 class="sub-header">班级成员列表</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>学号</th>
                   <th>学生姓名</th>
-                  <th>课程名</th>
-                  <th>分数</th>
-                  <th>任课教师</th>
+                  <th>手机号码</th>
+                  <th>班级</th>
                 </tr>
               </thead>
               <tbody>
-
     		 <%
-    		 		
-					int id = student.getSid();
+
     				StudentDao dao = DaoFactory.getDao();
-    				studentScore sc = new studentScore();
-    				List<studentScore> score = dao.findScore(id);
+    				List<Student> stus = dao.findStudent();
     				int j = 1;
    			 %>
    			 <% 
-   					for(studentScore i : score){
+   					for(Student i : stus){
    			 %>
-                  <tr><td><%=j %></td><td><td><%=i.getSname() %></td><td><%=i.getCname() %></td><td><%=i.getScore() %></td><td><%=i.getTname() %></td></tr>
+                  <tr><td><%=j %></td><td><%=i.getSid() %></td><td><%=i.getSname() %></td><td><%=i.getStel() %></td><td>计算机<%=i.getClassid() %>班</td></tr>
              <%
              		j++;
    				    }
      		 %>
+     		 	 
               </tbody>
             </table>
           </div>

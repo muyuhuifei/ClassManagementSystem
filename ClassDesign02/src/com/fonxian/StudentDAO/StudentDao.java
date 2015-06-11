@@ -217,7 +217,7 @@ public class StudentDao implements StudentIDao{
 	@Override
 	public void updateStudent(Student stu) {
 		// TODO Auto-generated method stub
-		String sql="update student set sname=? ,stel= ? , classid=? where sid= ?;";
+		String sql="update student set sname=? ,stel= ? , classid=? ,password = ? where sid= ?;";
 		try {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -225,7 +225,8 @@ public class StudentDao implements StudentIDao{
 			ps.setString(1, stu.getSname());
 			ps.setInt(2, stu.getStel());
 			ps.setInt(3, stu.getClassid());
-			ps.setInt(4, stu.getSid());
+			ps.setString(4, stu.getPassword());
+			ps.setInt(5, stu.getSid());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -235,5 +236,37 @@ public class StudentDao implements StudentIDao{
 			DBUtil.close(ps);
 			DBUtil.close(conn);
 		}
+	}
+
+	@Override
+	public Student login(int sid,String password) {
+		// TODO Auto-generated method stub
+		String sql="select * from student where sid=? and password=?;";
+		Student stu = null;
+		try {
+			conn = DBUtil.getConnection();
+			 ps = conn.prepareStatement(sql);
+			 ps.setInt(1, sid);
+			 ps.setString(2,password);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				stu = new Student();
+				stu.setSid(rs.getInt("sid"));
+				stu.setSname(rs.getString("sname"));
+				stu.setStel(rs.getInt("stel"));
+				stu.setClassid(rs.getInt("classid"));
+				stu.setPassword(rs.getString("password"));
+				stu.setStatus(rs.getInt("status"));
+			}
+			return stu;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(rs);
+			DBUtil.close(ps);
+			DBUtil.close(conn);
+		}
+		return null;
 	}
 }
