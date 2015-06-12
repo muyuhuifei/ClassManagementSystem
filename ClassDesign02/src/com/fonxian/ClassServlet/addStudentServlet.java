@@ -62,6 +62,10 @@ public class addStudentServlet extends HttpServlet {
 		int stel =Integer.parseInt(request.getParameter("stel"));
 		int classid =Integer.parseInt(request.getParameter("classid"));
 		
+		System.out.println(sid);
+		System.out.println(sname);
+		System.out.println(stel);
+		System.out.println(classid);
 		
 		System.out.println(sname);
 		Student stu = new Student();
@@ -71,7 +75,8 @@ public class addStudentServlet extends HttpServlet {
     	stu.setStel(stel);
     	StudentIDao studao = DaoFactory.getDao();
     	studao.addStudent(stu);
-    	response.sendRedirect("../admin/listStudent.jsp");
+    	System.out.println("Ìí¼Ó³É¹¦");
+    	response.sendRedirect("../admin/listStudentAdmin.jsp");	
 	}
 
 }

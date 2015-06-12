@@ -1,10 +1,6 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="com.fonxian.StudentDAO.StudentDao"%>
-<%@page import="com.fonxian.StudentDAO.StudentIDao"%>
-<%@page import="com.fonxian.StudentDAO.DaoFactory"%>
-<%@page import="com.fonxian.Model.Student"%>
-<%@page import="com.fonxian.Model.ClassException"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>班级管理中心</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -50,12 +46,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">班级个人中心</a>
+          <a class="navbar-brand" href="#">班级管理中心</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">首页</a></li>
-            <li><a href="#">发表文章</a></li>
+            <li><a href="#">学生成绩</a></li>
             <li><a href="#">系统留言</a></li>
             <li><a href="#">帮助</a></li>
           </ul>
@@ -70,10 +66,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-              <li class="active"><a href="introduce.jsp">系统说明<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="introduce.jsp">系统说明<span class="sr-only">(current)</span></a></li>
             <li><a href="listStudentAdmin.jsp">学生信息管理</a></li>
             <li><a href="#">成绩查询</a></li>
-            <li><a href="#">课程查询</a></li>
+            <li><a href="listClassAdmin.jsp">课程管理</a></li>
+
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
@@ -89,37 +86,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">个人中心</h1></br>
+          <h1 class="page-header">管理中心</h1></br>
 
-          <h2 class="sub-header">班级成员列表</h2>
+
+        
           <div class="table-responsive">
- <form action="/ClassDesign02/servlet/addStudentServlet" method="post">
             <table class="table table-striped">
               <thead>
-
-                <tr>
-                  <th>#</th>
-                  <th>学号</th>
-                  <th>学生姓名</th>
-                  <th>手机号码</th>
-                  <th>班级</th>
-                </tr>
+             	 <a class="navbar-brand" >该系统为班级网站管理系统，功能待完善
+             		需要补充的补充的功能：
+             	</a>
+             	<br/>
               </thead>
-
-   			
-                  	<tr>
-                  	<td></td>
-                  	<td><input type="text" name="sid"/></td>
-                  	<td><input type="text" name="sname"/></td>
-                  	<td><input type="text" name="stel"/></td>
-                  	<td><select name="classid"><option value="1">计算机1班</option><option value="2">计算机2班</option><option value="3">计算机3班</option><option value="4">计算机4班</option></select></td>
-                  	</tr>
-        
-     		 	 
+              <tbody>
+    
               </tbody>
             </table>
-            <input type="submit" value="提交">
-    </form>
+            <ul>
+        		<li>1、管理员后台学生添加功能(已完成)</li>
+        		<li>2、在学生列表中查看某成绩（已完成）</li>
+        		<li>3、课程管理（课程列表、添加课程、查看该课程成绩）</li>
+        		<li>4、录入分数功能（同学列表，输入分数，修改）</li>
+        		</ul>
           </div>
         </div>
       </div>

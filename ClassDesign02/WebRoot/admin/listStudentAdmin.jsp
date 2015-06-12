@@ -40,7 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-
+	<%
+	//	Student stud = (Student)session.getAttribute("loginUser");
+	 %>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -70,10 +72,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-              <li class="active"><a href="introduce.jsp">系统说明<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="introduce.jsp">系统说明<span class="sr-only">(current)</span></a></li>
             <li><a href="listStudentAdmin.jsp">学生信息管理</a></li>
             <li><a href="#">成绩查询</a></li>
-            <li><a href="#">课程查询</a></li>
+            <li><a href="listClassAdmin.jsp">课程管理</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
@@ -93,33 +95,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
           <h2 class="sub-header">班级成员列表</h2>
           <div class="table-responsive">
- <form action="/ClassDesign02/servlet/addStudentServlet" method="post">
             <table class="table table-striped">
               <thead>
-
+              
                 <tr>
                   <th>#</th>
                   <th>学号</th>
                   <th>学生姓名</th>
                   <th>手机号码</th>
                   <th>班级</th>
+                  <th>操作</th>
                 </tr>
               </thead>
+              <tbody>
+    		 <%
 
-   			
-                  	<tr>
-                  	<td></td>
-                  	<td><input type="text" name="sid"/></td>
-                  	<td><input type="text" name="sname"/></td>
-                  	<td><input type="text" name="stel"/></td>
-                  	<td><select name="classid"><option value="1">计算机1班</option><option value="2">计算机2班</option><option value="3">计算机3班</option><option value="4">计算机4班</option></select></td>
-                  	</tr>
-        
-     		 	 
+    				StudentDao dao = DaoFactory.getDao();
+    				List<Student> stus = dao.findStudent();
+    				int j = 1;
+   			 %>
+   			 <% 
+   					for(Student i : stus){
+   			 %>
+                  	<tr><td><%=j %></td><td><%=i.getSid() %></td><td><%=i.getSname() %></td><td><%=i.getStel() %></td><td>计算机<%=i.getClassid() %>班</td><td><a href="delStudentAdmin.jsp?sid=<%=i.getSid()%>">删除</a> | <a href="updateStudent1.jsp?sid=<%=i.getSid() %>">更改</a> | <a href="viewStudentScore.jsp?sid=<%=i.getSid() %>">查看成绩</a></td></tr>
+             <%
+             		j++;
+   				    }
+     		 %>
+     		 	 <tr><td></td><td></td><td></td><td></td><td></td><td><a href="addStudent.jsp"><h4>添加</h4></a></td></tr>
               </tbody>
             </table>
-            <input type="submit" value="提交">
-    </form>
           </div>
         </div>
       </div>

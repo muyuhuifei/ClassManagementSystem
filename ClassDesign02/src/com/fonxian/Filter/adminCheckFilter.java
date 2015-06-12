@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fonxian.Model.Student;
+import com.fonxian.Model.Teacher;
 
-public class userCheckFilter implements Filter {
+public class adminCheckFilter implements Filter {
 
 	@Override
 	public void destroy() {
@@ -29,10 +29,9 @@ public class userCheckFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpSession session = request.getSession();
-		Student stu = (Student)session.getAttribute("loginUser");
+		Teacher stu = (Teacher)session.getAttribute("loginAdmin");
 		if(stu == null){
-			response.sendRedirect(request.getContextPath()+"/"+"login.jsp");
-			//return;
+			response.sendRedirect(request.getContextPath()+"/"+"loginAdmin.jsp");
 		}else{
 			chain.doFilter(req, resp);
 		}
@@ -42,7 +41,7 @@ public class userCheckFilter implements Filter {
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

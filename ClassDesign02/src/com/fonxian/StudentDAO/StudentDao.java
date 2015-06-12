@@ -34,7 +34,7 @@ public class StudentDao implements StudentIDao{
 					return ;
 				}
 			}
-			sql = "insert into student values(?,?,?,?)";
+			sql = "insert into student(sid,sname,stel,classid) values(?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, stu.getSid());
 			ps.setString(2, stu.getSname());
@@ -113,9 +113,9 @@ public class StudentDao implements StudentIDao{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
+	
 	//班级成员列表
+	@Override
 	public List<Student> findStudent() {
 		// TODO Auto-generated method stub
 		String sql="select * from student";
@@ -144,8 +144,9 @@ public class StudentDao implements StudentIDao{
 		}
 		return null;
 	}
+	
 	//个人成绩
-
+	
 	@Override
 	public List<studentScore> findScore(int id) {
 		// TODO Auto-generated method stub
@@ -259,6 +260,37 @@ public class StudentDao implements StudentIDao{
 				stu.setStatus(rs.getInt("status"));
 			}
 			return stu;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(rs);
+			DBUtil.close(ps);
+			DBUtil.close(conn);
+		}
+		return null;
+	}
+
+	@Override
+	public Teacher loginAdmin(int tid, String password) {
+		// TODO Auto-generated method stub
+		String sql="select * from teacher where tid=? and password=?;";
+		Teacher teacher = null;
+		try {
+			conn = DBUtil.getConnection();
+			 ps = conn.prepareStatement(sql);
+			 ps.setInt(1, tid);
+			 ps.setString(2,password);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				teacher = new Teacher();
+				teacher.setTid(rs.getInt("tid"));
+				teacher.setTname(rs.getString("tname"));
+				teacher.setTtel(rs.getInt("ttel"));
+				teacher.setPassword(rs.getString("password"));
+				teacher.setStatus(rs.getInt("status"));
+			}
+			return teacher;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

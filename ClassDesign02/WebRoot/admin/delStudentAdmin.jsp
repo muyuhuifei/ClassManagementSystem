@@ -1,4 +1,7 @@
+<%@page import="com.fonxian.StudentDAO.DaoFactory"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="com.fonxian.StudentDAO.StudentDao"%>
+<%@ page language="java" import="com.fonxian.StudentDAO.StudentIDao"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'addSuccess.jsp' starting page</title>
+    <title>My JSP 'delStudent.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,9 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+  <%
+  	int sid = Integer.parseInt(request.getParameter("sid"));
+  	StudentDao studao = DaoFactory.getDao();
+  	System.out.println("找到的sid为"+sid);
+  	studao.delStudent(sid);
+  		System.out.println("删除");
+  	response.sendRedirect(request.getContextPath()+"/"+"admin/listStudentAdmin.jsp");
+   %>
   <body>
-    	<h1>学生更新成功</h1> <br>
-    	<a href="/ClassDesign02/admin/listStudentAdmin.jsp">查看列表</h3>
   </body>
 </html>

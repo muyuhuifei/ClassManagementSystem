@@ -40,7 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-
+	<%
+  		int sid = Integer.parseInt(request.getParameter("sid"));
+  		StudentIDao dao = DaoFactory.getDao();
+  		Student stu = dao.load(sid);
+  		int j = 1;
+  	 %>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -70,10 +75,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-              <li class="active"><a href="introduce.jsp">系统说明<span class="sr-only">(current)</span></a></li>
+       <li class="active"><a href="introduce.jsp">系统说明<span class="sr-only">(current)</span></a></li>
             <li><a href="listStudentAdmin.jsp">学生信息管理</a></li>
             <li><a href="#">成绩查询</a></li>
-            <li><a href="#">课程查询</a></li>
+            <li><a href="listClassAdmin.jsp">课程管理</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
@@ -93,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
           <h2 class="sub-header">班级成员列表</h2>
           <div class="table-responsive">
- <form action="/ClassDesign02/servlet/addStudentServlet" method="post">
+  <form action="/ClassDesign02/servlet/updateStudentServlet" method="post">
             <table class="table table-striped">
               <thead>
 
@@ -103,16 +108,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <th>学生姓名</th>
                   <th>手机号码</th>
                   <th>班级</th>
+                  <th>操作</th>
                 </tr>
               </thead>
 
    			
                   	<tr>
-                  	<td></td>
-                  	<td><input type="text" name="sid"/></td>
-                  	<td><input type="text" name="sname"/></td>
-                  	<td><input type="text" name="stel"/></td>
-                  	<td><select name="classid"><option value="1">计算机1班</option><option value="2">计算机2班</option><option value="3">计算机3班</option><option value="4">计算机4班</option></select></td>
+                  	<td><%=j %></td>
+                  	<td><%=sid %><input type="hidden" name="sid" value="<%=sid%>"/></td>
+                  	<td><input type="text" name="sname" value="<%=stu.getSname()%>"/></td>
+                  	<td><input type="text" name="stel" value="<%=stu.getStel()%>"/></td>
+                  	<td>计算机<input type="text" name="classid" value="<%=stu.getClassid()%>"/>班</td>
+                  	<td><input type="submit" value="提交"></td>
                   	</tr>
         
      		 	 

@@ -63,7 +63,7 @@ public class updateStudentServlet extends HttpServlet {
     	StudentIDao studao = DaoFactory.getDao();
     	studao.updateStudent(stu);;
     	System.out.println("更新成功");
-    	response.sendRedirect("../admin/listStudent.jsp");
+    	response.sendRedirect("../admin/listStudentAdmin.jsp");	
 	}
 
 }
