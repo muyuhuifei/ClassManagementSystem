@@ -34,12 +34,13 @@ public class StudentDao implements StudentIDao{
 					return ;
 				}
 			}
-			sql = "insert into student(sid,sname,stel,classid) values(?,?,?,?)";
+			sql = "insert into student(sid,sname,stel,classid,password) values(?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, stu.getSid());
 			ps.setString(2, stu.getSname());
 			ps.setInt(3, stu.getStel());
 			ps.setInt(4, stu.getClassid());
+			ps.setString(5, stu.getPassword());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -151,6 +152,7 @@ public class StudentDao implements StudentIDao{
 	public List<studentScore> findScore(int id) {
 		// TODO Auto-generated method stub
 		String sql="select student.sname,course.cname,score,teacher.tname from sc,student,course,teacher where student.sid=sc.sid and course.cid = sc.cid and course.tid = teacher.tid and student.sid=?";
+		
 		studentScore studentScore = null;
 		List<studentScore> scores = new ArrayList<studentScore>();
 		try {
@@ -201,6 +203,7 @@ public class StudentDao implements StudentIDao{
 				stu.setSname(rs.getString("sname"));
 				stu.setStel(rs.getInt("stel"));
 				stu.setClassid(rs.getInt("classid"));
+				stu.setPassword(rs.getString("password"));
 			}
 			return stu;
 		} catch (SQLException e) {

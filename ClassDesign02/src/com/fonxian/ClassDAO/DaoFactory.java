@@ -1,11 +1,9 @@
-package com.fonxian.StudentDAO;
+package com.fonxian.ClassDAO;
 
 import com.fonxian.ClassDAO.ClassDao;
 
 public class DaoFactory {
-	public static StudentDao getDao(){
-		return new StudentDao();
-	}
+	
 	public static ClassDao getClassDao(){
 		return new ClassDao();
 	}

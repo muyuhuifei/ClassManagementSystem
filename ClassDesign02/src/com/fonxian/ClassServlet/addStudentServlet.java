@@ -60,17 +60,20 @@ public class addStudentServlet extends HttpServlet {
 		int sid =Integer.parseInt(request.getParameter("sid"));
 		String sname = request.getParameter("sname");
 		int stel =Integer.parseInt(request.getParameter("stel"));
+		String password = request.getParameter("password");
 		int classid =Integer.parseInt(request.getParameter("classid"));
 		
-		System.out.println(sid);
-		System.out.println(sname);
-		System.out.println(stel);
-		System.out.println(classid);
+		System.out.println("sid"+sid);
+		System.out.println("sanme"+sname);
+		System.out.println("stel"+stel);
+		System.out.println("classid"+classid);
+		System.out.println("password"+password);
 		
 		System.out.println(sname);
 		Student stu = new Student();
     	stu.setSid(sid);
     	stu.setSname(sname);
+    	stu.setPassword(password);
     	stu.setClassid(classid);
     	stu.setStel(stel);
     	StudentIDao studao = DaoFactory.getDao();

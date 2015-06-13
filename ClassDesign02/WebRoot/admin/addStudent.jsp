@@ -102,6 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <th>学号</th>
                   <th>学生姓名</th>
                   <th>手机号码</th>
+                  <th>密码</th>
                   <th>班级</th>
                 </tr>
               </thead>
@@ -112,6 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   	<td><input type="text" name="sid"/></td>
                   	<td><input type="text" name="sname"/></td>
                   	<td><input type="text" name="stel"/></td>
+                  	<td><input type="text" name="password"/></td>
                   	<td><select name="classid"><option value="1">计算机1班</option><option value="2">计算机2班</option><option value="3">计算机3班</option><option value="4">计算机4班</option></select></td>
                   	</tr>
         

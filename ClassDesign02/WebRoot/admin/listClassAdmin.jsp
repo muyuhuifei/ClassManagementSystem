@@ -2,8 +2,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="com.fonxian.StudentDAO.StudentDao"%>
 <%@page import="com.fonxian.StudentDAO.StudentIDao"%>
-<%@page import="com.fonxian.StudentDAO.ClassDao"%>
-<%@page import="com.fonxian.StudentDAO.ClassIDao"%>
+<%@page import="com.fonxian.ClassDAO.ClassDao"%>
+<%@page import="com.fonxian.ClassDAO.ClassIDao"%>
 <%@page import="com.fonxian.StudentDAO.DaoFactory"%>
 <%@page import="com.fonxian.Model.Student"%>
 <%@page import="com.fonxian.Model.Course"%>
@@ -115,7 +115,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			 <% 
    					for(Course i : course){
    			 %>
-                  	<tr><td><%=j %></td><td><%=i.getCid() %></td><td><%=i.getCname() %></td><td><%=i.getTid() %></td><td><a href="delStudentAdmin.jsp?sid=<%=i.getCid()%>">删除</a> | <a href="updateStudent1.jsp?sid=<%=i.getCid() %>">更改</a> | <a href="viewStudentScore.jsp?cid=<%=i.getCid() %>">查看成绩</a></td></tr>
+                  	<tr>
+                  	<td><%=j %></td>
+                  	<td><%=i.getCid() %></td>
+                  	<td><%=i.getCname() %></td>
+                  	<td><%=i.getTid() %></td>
+                  	<td><a href="delStudentAdmin.jsp?sid=<%=i.getCid()%>">删除</a> | <a href="updateStudent1.jsp?sid=<%=i.getCid() %>">更改</a> | <a href="classStudentScore.jsp?cid=<%=i.getCid() %>">查看成绩</a></td>
+                  	</tr>
              <%
              		j++;
    				    }

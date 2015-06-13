@@ -52,6 +52,7 @@ public class updateStudentServlet extends HttpServlet {
 		String sname = request.getParameter("sname");
 		int stel =Integer.parseInt(request.getParameter("stel"));
 		int classid =Integer.parseInt(request.getParameter("classid"));
+		String password = request.getParameter("password");
 		
 		
 		System.out.println(sname);
@@ -60,6 +61,7 @@ public class updateStudentServlet extends HttpServlet {
     	stu.setSname(sname);
     	stu.setClassid(classid);
     	stu.setStel(stel);
+    	stu.setPassword(password);
     	StudentIDao studao = DaoFactory.getDao();
     	studao.updateStudent(stu);;
     	System.out.println("更新成功");

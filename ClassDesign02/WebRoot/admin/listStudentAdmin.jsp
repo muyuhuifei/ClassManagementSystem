@@ -117,7 +117,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			 <% 
    					for(Student i : stus){
    			 %>
-                  	<tr><td><%=j %></td><td><%=i.getSid() %></td><td><%=i.getSname() %></td><td><%=i.getStel() %></td><td>计算机<%=i.getClassid() %>班</td><td><a href="delStudentAdmin.jsp?sid=<%=i.getSid()%>">删除</a> | <a href="updateStudent1.jsp?sid=<%=i.getSid() %>">更改</a> | <a href="viewStudentScore.jsp?sid=<%=i.getSid() %>">查看成绩</a></td></tr>
+                  	<tr>
+                  	<td><%=j %></td>
+                  	<td><%=i.getSid() %></td>
+                  	<td><%=i.getSname() %></td>
+                  	<td><%=i.getStel() %></td>
+                  	<td>计算机<%=i.getClassid() %>班</td>
+                  	<td>
+                  		<a href="delStudentAdmin.jsp?sid=<%=i.getSid()%>">删除</a> 
+                  		| <a href="updateStudent1.jsp?sid=<%=i.getSid() %>">更改</a> 
+                  		| <a href="oneStudentScore.jsp?sid=<%=i.getSid() %>">查看成绩</a>
+                  	</td>
+                  	</tr>
              <%
              		j++;
    				    }

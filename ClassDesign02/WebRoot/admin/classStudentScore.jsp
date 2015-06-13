@@ -1,9 +1,9 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="com.fonxian.StudentDAO.StudentDao"%>
-<%@page import="com.fonxian.StudentDAO.StudentIDao"%>
-<%@page import="com.fonxian.StudentDAO.DaoFactory"%>
-<%@page import="com.fonxian.Model.Student"%>
+<%@page import="com.fonxian.ClassDAO.ClassDao"%>
+<%@page import="com.fonxian.ClassDAO.ClassIDao"%>
+<%@page import="com.fonxian.ClassDAO.DaoFactory"%>
+<%@page import="com.fonxian.Model.courseAllScore"%>
 <%@page import="com.fonxian.Model.ClassException"%>
 <%
 String path = request.getContextPath();
@@ -40,12 +40,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-	<%
-  		int sid = Integer.parseInt(request.getParameter("sid"));
-  		StudentIDao dao = DaoFactory.getDao();
-  		Student stu = dao.load(sid);
-  		int j = 1;
-  	 %>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -96,39 +90,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">个人中心</h1></br>
 
-          <h2 class="sub-header">班级成员列表</h2>
+
+          <h2 class="sub-header">成绩单</h2>
           <div class="table-responsive">
-  <form action="/ClassDesign02/servlet/updateStudentServlet" method="post">
             <table class="table table-striped">
               <thead>
-
                 <tr>
                   <th>#</th>
-                  <th>学号</th>
+                  <th>课程编号</th>
+                  <th>课程名</th>
                   <th>学生姓名</th>
-                  <th>手机号码</th>
-                  <th>密码</th>
-                  <th>班级</th>
-                  <th>操作</th>
+                  <th>成绩</th>
+                   <th>任课教师</th>
                 </tr>
               </thead>
+              <tbody>
 
-   			
-                  	<tr>
+    		 <%
+    		 		
+					int cid = Integer.parseInt(request.getParameter("cid"));
+    				ClassDao dao = DaoFactory.getClassDao();
+    				courseAllScore course = new courseAllScore();
+    				List<courseAllScore> courses = dao.findCourseAllScore(cid);
+    				int j = 1;
+   			 %>
+   			 <% 
+   					for(courseAllScore i : courses){
+   			 %>
+                  <tr>
                   	<td><%=j %></td>
-                  	<td><%=sid %><input type="hidden" name="sid" value="<%=sid%>"/></td>
-                  	<td><input type="text" name="sname" value="<%=stu.getSname()%>"/></td>
-                  	<td><input type="text" name="stel" value="<%=stu.getStel()%>"/></td>
-                  	<td><input type="text" name="password" value="<%=stu.getPassword()%>"/></td>
-                  	<td>计算机<input type="text" name="classid" value="<%=stu.getClassid()%>"/>班</td>
-                  	<td><input type="submit" value="提交"></td>
-                  	</tr>
-        
-     		 	 
+                 	 <td><%=i.getCid() %></td>
+                 	 <td><%=i.getCname() %></td>
+                  	 <td><%=i.getSname() %></td>
+                 	 <td><%=i.getScore() %></td>
+                 	 <td><%=i.getTname() %></td>
+                  </tr>
+             <%
+             		j++;
+   				    }
+     		 %>
               </tbody>
             </table>
-            <input type="submit" value="提交">
-    </form>
           </div>
         </div>
       </div>
