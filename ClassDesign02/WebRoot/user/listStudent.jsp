@@ -75,10 +75,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li class="active"><a href="#">系统说明 <span class="sr-only">(current)</span></a></li>
             <li><a href="listStudent.jsp">班级通讯录</a></li>
             <li><a href="selfscore.jsp">个人成绩</a></li>
-            <li><a href="#">个人信息</a></li>
+            <li><a href="selfInfo.jsp">个人信息</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
+            <li><a href="selfInfo.jsp">Nav item</a></li>
             <li><a href="">Nav item again</a></li>
             <li><a href="">One more nav</a></li>
             <li><a href="">Another nav item</a></li>

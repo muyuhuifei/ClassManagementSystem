@@ -2,19 +2,17 @@ package com.fonxian.ClassServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fonxian.Model.Student;
+import com.fonxian.Model.Course;
 import com.fonxian.StudentDAO.DaoFactory;
 import com.fonxian.StudentDAO.StudentIDao;
 
-public class addStudentServlet extends HttpServlet {
+public class addClassServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -48,34 +46,31 @@ public class addStudentServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		int sid =Integer.parseInt(request.getParameter("sid"));
-		String sname = request.getParameter("sname");
-		int stel =Integer.parseInt(request.getParameter("stel"));
-		String password = request.getParameter("password");
-		int classid =Integer.parseInt(request.getParameter("classid"));
+		int cid =Integer.parseInt(request.getParameter("cid"));
+		String cname = request.getParameter("cname");
+		int tid =Integer.parseInt(request.getParameter("tid"));
+
 		
-		System.out.println("sid"+sid);
-		System.out.println("sanme"+sname);
-		System.out.println("stel"+stel);
-		System.out.println("classid"+classid);
-		System.out.println("password"+password);
+		System.out.println("sid"+cid);
+		System.out.println("sanme"+cname);
+		System.out.println("stel"+tid);
+
 		
-		System.out.println(sname);
-		Student stu = new Student();
-    	stu.setSid(sid);
-    	stu.setSname(sname);
-    	stu.setPassword(password);
-    	stu.setClassid(classid);
-    	stu.setStel(stel);
+		System.out.println(cname);
+		Course course = new Course();
+    	course.setCid(cid);
+    	course.setCname(cname);
+    	course.setTid(tid);
     	StudentIDao studao = DaoFactory.getDao();
-    	studao.addStudent(stu);
+    	studao.addCourse(course);
     	System.out.println("Ìí¼Ó³É¹¦");
-    	response.sendRedirect("../admin/listStudentAdmin.jsp");	
+    	response.sendRedirect("../admin/listClassAdmin.jsp");	
 	}
 
 }

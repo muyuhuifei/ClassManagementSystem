@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
       <!-- Site footer -->
       <footer class="footer">
-        <p>&copy; FonXian 2015</p>
+        <a href="loginAdmin.jsp">&copy; FonXian 2015</a>
       </footer>
 
     </div> <!-- /container -->

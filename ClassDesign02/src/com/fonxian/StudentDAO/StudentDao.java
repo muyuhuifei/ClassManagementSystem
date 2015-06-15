@@ -106,7 +106,32 @@ public class StudentDao implements StudentIDao{
 	@Override
 	public void addCourse(Course course) {
 		// TODO Auto-generated method stub
-		
+		String sql="select count(*) from course where cid=?";
+		try {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, course.getCid());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				if(rs.getInt(1)>0){
+					throw new ClassException("添加的课程已经存在，请勿重复添加");
+				}
+			}
+			sql = "insert into course values(?,?,?)";
+			//insert into teacher values(2001,"姜磊",1234);
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, course.getCid());
+			ps.setString(2, course.getCname());
+			ps.setInt(3, course.getTid());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(rs);
+			DBUtil.close(ps);
+			DBUtil.close(conn);
+		}
 	}
 
 	@Override

@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
+            <li><a href="">权限管理</a></li>
             <li><a href="">Nav item again</a></li>
             <li><a href="">One more nav</a></li>
             <li><a href="">Another nav item</a></li>
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <ul>
         		<li>1、管理员后台学生添加功能(已完成)</li>
         		<li>2、在学生列表中查看某成绩（已完成）</li>
-        		<li>3、课程管理（添加课程）</li>
+        		<li>3、课程管理中添加课程（已完成）</li>
         		<li>4、录入分数功能（同学列表，输入分数，修改）</li>
         		<li>5、学生登录可修改信息</li>
         		<li>6、课程管理中课程列表、查看该课程全部学生成绩、（已完成）</li>
